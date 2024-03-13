@@ -28,6 +28,16 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PostMapping("/login")
+    public boolean login(@RequestBody User user) {
+        return userService.authenticate(user.getUsername(), user.getPassword());
+    }
+
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.register(user);
+    }
+
     @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User user) {
         return userService.updateUser(id, user);
