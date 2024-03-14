@@ -1,5 +1,3 @@
-package com.example.mywebapp.controller;
-
 import com.example.mywebapp.model.User;
 import com.example.mywebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,6 @@ public class UIController {
     public String getUserList(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        return "users"; // This corresponds to the name of the HTML file (users.html)
+        return "users"; // Return the name of the Thymeleaf template
     }
 }
