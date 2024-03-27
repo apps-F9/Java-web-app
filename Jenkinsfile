@@ -13,7 +13,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh '''
-                java -jar target/mywebapp:1.0-SNAPSHOT
+                java -jar target/mywebapp-1.0-SNAPSHOT.jar
                 '''
             }
         }
