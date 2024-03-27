@@ -1,24 +1,40 @@
-package com.example.mywebapp.controller;
+package com.example.controller;
 
-import com.example.mywebapp.model.User;
-import com.example.mywebapp.service.UserService;
+import com.example.model.User;
+import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @GetMapping
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // Other methods as needed
+    @PostMapping("/")
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
 }
