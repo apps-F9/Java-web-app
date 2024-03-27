@@ -10,10 +10,10 @@ pipeline {
                 '''
             }
         }
-        stage('Run') {
+        stage('Docker') {
             steps {
                 sh '''
-                java -jar target/webapp-0.0.1-SNAPSHOT.jar
+                docker image build -t java-web-app:1.0 .
                 '''
             }
         }
