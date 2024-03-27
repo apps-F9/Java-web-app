@@ -6,7 +6,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                mvn -X clean package
+                mvn -X package
+                '''
+            }
+        }
+        stage('Run') {
+            steps {
+                sh '''
+                java -jar target/mywebapp:1.0-SNAPSHOT
                 '''
             }
         }
