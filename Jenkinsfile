@@ -13,7 +13,7 @@ pipeline {
         stage('Docker') {
             steps {
                 sh '''
-                docker image build -t java-web-app:1.0 .
+                sudo docker image build -t java-web-app:1.0 .
                 '''
             }
         }
